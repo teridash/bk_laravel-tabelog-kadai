@@ -16,9 +16,18 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     { //dd($request->category_id);
+        if($request->category !== null) {
+            $stores = Store::where('category_id', $request->category);
+            $total_count = Store::where('category_id', $request->category)->count();
+            $category = Category::find($request->category);
+        } else {
+            $total_count = "";
+            $category = null;
+        }
+
         $stores = Store::all();
         $categories = Category::all();
-        return view('stores.index', compact('stores', 'categories'));
+        return view('stores.index', compact('stores', 'categories', 'total_count'));
 
     }
 
