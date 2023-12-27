@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Store;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,12 @@ class StoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(Request $request)
+    { //dd($request->category_id);
+        $stores = Store::all();
+        $categories = Category::all();
+        return view('stores.index', compact('stores', 'categories'));
+
     }
 
     /**
@@ -25,7 +29,7 @@ class StoreController extends Controller
      */
     public function create()
     {
-        //
+        return view('stores.create');
     }
 
     /**
@@ -36,7 +40,18 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = new Store();
+        $store->name = $request->input('name');
+        $store->description = $request->input('discription');
+        $store->price = $request->input('price');
+        $store->time = $request->input('time');
+        $store->postal_code = $request->input('postal_code');
+        $store->address = $request->input('address');
+        $store->save();
+
+        return to_route('stores.index');
+
+
     }
 
     /**
@@ -47,7 +62,7 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        //
+        return view('stores.show', compact('store'));
     }
 
     /**
@@ -58,7 +73,7 @@ class StoreController extends Controller
      */
     public function edit(Store $store)
     {
-        //
+        return view('stores.edit', compact('store'));
     }
 
     /**
@@ -70,7 +85,16 @@ class StoreController extends Controller
      */
     public function update(Request $request, Store $store)
     {
-        //
+        $store->name = $request->input('name');
+        $store->description = $request->input('discription');
+        $store->price = $request->input('price');
+        $store->time = $request->input('time');
+        $store->postal_code = $request->input('postal_code');
+        $store->address = $request->input('address');
+        $store->category_id = $request->input('cactegory_id');
+        $store->update();
+
+        return to_route('stores.index');
     }
 
     /**
@@ -81,6 +105,8 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
-        //
+        $store->delete();
+
+        return to_route('stores.index');
     }
 }
