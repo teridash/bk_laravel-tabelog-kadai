@@ -4,50 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function mypage()
     {
-        //
-    }
+        $user = Auth::user();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
+        return view('users.mypage', compact('user'));
     }
 
     /**
@@ -58,7 +24,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $user = Auth::user();
+
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -70,17 +38,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
-    }
+        $user = Auth::user();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        //
+        $user->name = $request->input('name') ? $request->input('name') : $user->name;
+        $user->email = $request->input('email') ? $request->input('email') : $user->email;
+        $user->user_name = $request->input('user_name') ? $request->input('user_name') : $user->user_name;
+        $user->update();
+
+        return to_route('mypage');
     }
+ 
 }
