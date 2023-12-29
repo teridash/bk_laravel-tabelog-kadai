@@ -15,17 +15,26 @@ class StoreController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    { //dd($request->category_id);
+    { 
+        if($request->name !== null) {
+            $stores = Store::where('name', 'like', "%{$request->name}%")->get();
+        } elseif($request->category !== null) {
+
+        } else {
+
+        }
+        //dd($request->name);
+        //dd($stores);
         if($request->category !== null) {
             $stores = Store::where('category_id', $request->category);
             $total_count = Store::where('category_id', $request->category)->count();
             $category = Category::find($request->category);
         } else {
+            $stores = Store::all();
             $total_count = "";
             $category = null;
         }
 
-        $stores = Store::all();
         $categories = Category::all();
         return view('stores.index', compact('stores', 'categories', 'total_count'));
 
@@ -82,7 +91,8 @@ class StoreController extends Controller
      */
     public function edit(Store $store)
     {
-        return view('stores.edit', compact('store'));
+        $categories = Category::all();
+        return view('stores.edit', compact('store', 'categories'));
     }
 
     /**

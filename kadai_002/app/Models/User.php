@@ -14,6 +14,10 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function reservations() {
+        return $this->hasMany(Reservation::class);
+    }
+
     public function sendEmailVerificationNotification()
      {
          $this->notify(new CustomVerifyEmail());

@@ -4,6 +4,8 @@
   <option value="{{ $category->id }}">{{ $category->name }}</option>
   @endforeach
   </select>
+  <input type="text" name="name">
+  
   <button type="submit" value="送信"></button>
 
 </form>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReservationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,5 +28,6 @@ Route::controller(UserController::class)->group(function () {
 Auth::routes(['verify' => true]);
 
 Route::resource('stores', StoreController::class);
+Route::resource('reservations', ReservationController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
