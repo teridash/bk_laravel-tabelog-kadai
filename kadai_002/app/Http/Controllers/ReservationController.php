@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -23,9 +24,12 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $store_id = $request->store_id;
+        $user_name = Auth::user()->name;
+
+        return view('reservations.create', compact('store_id', 'user_name'));
     }
 
     /**
@@ -36,7 +40,15 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reservation = new Reservation();
+        $reservation->user_id = Auth::user()->id;
+        $reservation->number_of_people = $request->input('number_of_people');
+        $reservation->date_time = $request->input('date').' '.$request->input('time').':00:00';
+        $reservation->store_id = $request->input('store_id');
+        $reservation->save();
+
+        return redirect()->route('stores.show', $reservation->store_id);
+        
     }
 
     /**

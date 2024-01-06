@@ -1,5 +1,7 @@
 {{ $store -> name }}
 
+<a href="{{ route('reservations.create', ['store_id' => $store->id]) }}">予約</a>
+
 <div class="row">
   @foreach($reviews as $review)
   <p>{{ $review->content }}</p>
