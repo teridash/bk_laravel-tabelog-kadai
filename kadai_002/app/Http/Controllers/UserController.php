@@ -70,5 +70,11 @@ class UserController extends Controller
     {
         return view('users.edit_password');
     }
+
+    public function destroy(Request $request)
+    {
+        Auth::user()->delete();
+        return redirect('/');
+    }
  
 }
