@@ -20,7 +20,7 @@ class StoreController extends Controller
         $category = "";
         $category_id = null;
         $name = null;
-        $address = "";
+        $address = null;
 
         if($request->name !== null) {
             $name = $request->name;
@@ -33,8 +33,8 @@ class StoreController extends Controller
         $stores = Store::where('name', 'like', "%{$name}%")->where('address', 'like', "%{$address}%");
 
         if($request->category_id !== null) {
+            $category_id = $request->category_id;
             $category = Category::find($category_id);
-            $category_id = $category_id;
             $stores = $stores->where('category_id', $category_id);
         }
 
