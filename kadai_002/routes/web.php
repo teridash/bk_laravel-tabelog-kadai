@@ -17,9 +17,9 @@ use App\Http\Controllers\ReviewController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+    //return view('welcome');
+//});
 
 Route::controller(UserController::class)->group(function () {
     Route::get('users/mypage', 'mypage')->name('mypage');
@@ -28,6 +28,7 @@ Route::controller(UserController::class)->group(function () {
     Route::get('users/mypage/password/edit', 'edit_password')->name('mypage.edit_password');
     Route::put('users/mypage/password', 'update_password')->name('mypage.update_password');
     Route::delete('users/mypage/delete', 'destroy')->name('mypage.destroy');
+    Route::get('users/mypage/reservations', 'reservation' )->name('mypage.reservations');
 });
 
 Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
@@ -37,4 +38,6 @@ Auth::routes(['verify' => true]);
 Route::resource('stores', StoreController::class);
 Route::resource('reservations', ReservationController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('campany', [App\Http\Controllers\CampanyController::class, 'index'])->name('campany');

@@ -76,5 +76,12 @@ class UserController extends Controller
         Auth::user()->delete();
         return redirect('/');
     }
+
+    public function reservation()
+    {
+        $reservations = Auth::user()->reservations;
+
+        return view('users.reservations', compact('reservations'));
+    }
  
 }

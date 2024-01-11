@@ -16,26 +16,30 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     { 
-        if($request->name !== null) {
-            $stores = Store::where('name', 'like', "%{$request->name}%")->get();
-        } elseif($request->category !== null) {
-
-        } else {
-
-        }
-        //dd($request->name);
-        //dd($stores);
-        if($request->category !== null) {
-            $stores = Store::where('category_id', $request->category);
-            $total_count = Store::where('category_id', $request->category)->count();
-            $category = Category::find($request->category);
-        } else {
-            $stores = Store::all();
-            $total_count = "";
-            $category = null;
-        }
-
         $categories = Category::all();
+        $category = "";
+        $category_id = null;
+        $name = null;
+        $address = "";
+
+        if($request->name !== null) {
+            $name = $request->name;
+        }
+
+        if($request->address !== null){
+            $address = $request->address;
+        }
+
+        $stores = Store::where('name', 'like', "%{$name}%")->where('address', 'like', "%{$address}%");
+
+        if($request->category_id !== null) {
+            $category = Category::find($category_id);
+            $category_id = $category_id;
+            $stores = $stores->where('category_id', $category_id);
+        }
+
+        $total_count = $stores->count();
+        $stores = $stores->paginate();
         return view('stores.index', compact('stores', 'categories', 'total_count'));
 
     }
