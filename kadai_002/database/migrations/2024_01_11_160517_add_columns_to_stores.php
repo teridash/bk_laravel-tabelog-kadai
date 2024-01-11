@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::table('stores', function (Blueprint $table) {
             $table->text('description');
             $table->integer('price')->unsigned();
-            $table->time('opening_time');
-            $table->time('closing_time');
+            $table->time('open_time');
+            $table->time('close_time');
             $table->string('postal_code');
             $table->string('address');
             $table->string('phone_number');

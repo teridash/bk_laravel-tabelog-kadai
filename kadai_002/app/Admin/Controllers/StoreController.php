@@ -33,6 +33,10 @@ class StoreController extends AdminController
         $grid->column('price', __('Price'))->sortable();
         $grid->column('open_time', __('Open Time'));
         $grid->column('close_time', __('Close Time'));
+        $grid->column('postal_code', __('Postal Code'));
+        $grid->column('address', __('Address'));
+        $grid->column('phone_number', __('Phone Number'));
+        $grid->column('holiday', __('Holiday'));
         $grid->column('category.name', __('Category Name'));
         $grid->column('image', __('Image'))->image();
         $grid->column('created_at', __('Created at'))->sortable();
@@ -62,6 +66,14 @@ class StoreController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
+        $show->field('description', __('Description'));
+        $show->field('price', __('Price'));
+        $show->field('open_time', __('Open Time'));
+        $show->field('close_time', __('Close Time'));
+        $show->field('postal_code', __('Postal Code'));
+        $show->field('address', __('Address'));
+        $show->field('phone_number', __('Phone Number'));
+        $show->field('holiday', __('Holiday'));
         $show->field('category.name', __('Category Name'));
         $show->field('image', __('Image'))->image();
         $show->field('created_at', __('Created at'));
@@ -80,6 +92,14 @@ class StoreController extends AdminController
         $form = new Form(new Store());
 
         $form->text('name', __('Name'));
+        $form->text('description', __('Description'));
+        $form->text('price', __('Price'));
+        $form->text('open_time', __('Open Time'));
+        $form->text('close_time', __('Close Time'));
+        $form->text('postal_code', __('Postal Code'));
+        $form->text('address', __('Address'));
+        $form->text('phone_number', __('Phone Number'));
+        $form->text('holiday', __('Holiday'));
         $form->number('category_id', __('Category Name'))->options(Category::all()->pluck('name', 'id'));
         $form->image('image', __('Image'));
 
