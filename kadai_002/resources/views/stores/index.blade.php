@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <form action="{{route('stores.index')}}" method="GET">
   <select name="category_id">
   @foreach($categories as $category)
@@ -16,9 +19,7 @@
 {{ $store -> category -> name }} <br>
 <a href="{{ route('stores.destroy', $store->id) }}" method="POST">
 <a href="{{ route('stores.show', $store->id) }}">Show</a><br>
-<a href="{{ route('stores.edit', $store->id) }}">Edit</a><br>
-@csrf
-@method('DELETE')
-<button type="submit">Delete</button><br>
 @endforeach
+
+@endsection
 

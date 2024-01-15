@@ -16,7 +16,8 @@ class CampanyController extends Controller
     public function index()
     {
         $campany = Campany::find(1);
-        dd($campany);
+        
+        return view('campany.index', compact('campany'));
     }
 
     /**

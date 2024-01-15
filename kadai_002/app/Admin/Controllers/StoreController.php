@@ -100,7 +100,7 @@ class StoreController extends AdminController
         $form->text('address', __('Address'));
         $form->text('phone_number', __('Phone Number'));
         $form->text('holiday', __('Holiday'));
-        $form->number('category_id', __('Category Name'))->options(Category::all()->pluck('name', 'id'));
+        $form->select('category_id', __('Category Name'))->options(Category::all()->pluck('name', 'id'));
         $form->image('image', __('Image'));
 
         return $form;

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #D6E5DF;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -18,24 +18,25 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item mr-5">
-                          <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                          <a class="nav-link" href="{{ route('register') }}">{{ __('新規登録') }}</a>
                         </li>
                         <li class="nav-item mr-5">
-                          <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        <hr>
-                        <li class="nav-item mr-5">
-                          <a class="nav-link" href="{{ route('login') }}"><i class="far fa-heart"></i></a>
-                        </li>
-                        <li class="nav-item mr-5">
-                          <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-shopping-cart"></i></a>
+                          <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
                         </li>
                         @else
                         <li class="nav-item mr-5">
                         <a class="nav-link" href="{{ route('mypage') }}">
-                        <i class="fas fa-user mr-1"></i><label>マイページ</label>
+                        <i class="fas fa-user mr-1"></i>
+                        <label>マイページ</label>
                         </a>
                         </li>
+                        <li class="nav-item mr-5">
+                        <a class="nav-link" href="{{ route('campany') }}">
+                        <i class="fas fa-user mr-1"></i>
+                        <label>会社情報</label>
+                        </a>
+                        </li>
+                        
                         @endguest
                     </ul>
                 </div>

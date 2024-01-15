@@ -5,6 +5,8 @@ use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\StoreController;
 use App\Admin\Controllers\UserController;
 use App\Admin\Controllers\ReviewController;
+use App\Admin\Controllers\CampanyController;
+use App\Models\Campany;
 
 Admin::routes();
 
@@ -20,5 +22,7 @@ Route::group([
     $router->resource('stores', StoreController::class);
     $router->resource('users', UserController::class);
     $router->resource('reviews', ReviewController::class);
+    $router->resource('campanies', CampanyController::class);
+
 
 });

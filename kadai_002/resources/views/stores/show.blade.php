@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 {{ $store -> name }}
 <br>
 <img src="{{ asset($store->image) }}" class="">
@@ -39,3 +42,5 @@
   </form>
 @endauth
 </div>
+
+@endsection
