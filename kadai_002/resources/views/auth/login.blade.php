@@ -53,12 +53,12 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     {{ __('ログイン') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link text-success" href="{{ route('password.request') }}">
                                         {{ __('パスワードをお忘れの場合') }}
                                     </a>
                                 @endif
@@ -69,7 +69,7 @@
                     <hr>
  
                     <div class="form-group">
-                    <a class="btn btn-link mt-3 d-flex justify-content-center samuraimart-login-text" href="{{ route('register') }}">
+                    <a class="btn btn-link mt-3 d-flex justify-content-center text-success" href="{{ route('register') }}">
                      新規登録
                     </a>
                     </div>

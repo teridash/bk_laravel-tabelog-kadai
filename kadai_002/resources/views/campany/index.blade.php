@@ -8,7 +8,7 @@
   <div class="container">
     <div>
         <h1>会社情報</h1>
-      <table class="table table-striped">
+      <table class="table table-striped mt-4">
         <tr>
           <th scope="row">会社名</th>
           <td>{{ $campany->name }}</td>

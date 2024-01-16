@@ -25,7 +25,7 @@
         <hr>
         <div class="align-items-center mt-3 mb-4">
           <a href="{{ route('logout') }}" class="mypage" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"></form>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         </div>
         <hr>
           @csrf
