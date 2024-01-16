@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-{{ $store -> name }}
-<br>
-<img src="{{ asset($store->image) }}" class="">
-
-
-<a href="{{ route('reservations.create', ['store_id' => $store->id]) }}">予約</a>
+<div class="">
+  {{ $store -> name }}
+  <br>
+  <div class="col-4">
+    <img src="{{ asset($store->image) }}" class="img-thumbnail mt-3">
+  </div>
+  <br>
+  <a href="{{ route('reservations.create', ['store_id' => $store->id]) }}" class="btn btn-success mt-3">予約</a>
+</div>
 
 <div class="row">
   @foreach($reviews as $review)

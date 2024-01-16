@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container d-flex justify-content-center mt-3">
 <div class="w-50">
   <h1>会員情報の編集</h1>
   <hr>
@@ -10,7 +11,7 @@
 
     <div class="form-group">
       <label for="name" class="">氏名</label>
-      <input id="name" type="text" class="" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus placeholder="侍 太郎">
+      <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus placeholder="侍 太郎">
       @error('name')
       <span class="invalid-feedback" role="alert">
         <strong>氏名を入力してください</strong>
@@ -21,7 +22,7 @@
 
     <div class="form-group">
       <label for="user_name" class="">ユーザーネーム</label>
-      <input id="user_name" type="text" class="" name="user_name" value="{{ $user->user_name }}" required autocomplete="name" autofocus placeholder="太郎">
+      <input id="user_name" type="text" class="form-control" name="user_name" value="{{ $user->user_name }}" required autocomplete="name" autofocus placeholder="太郎">
       @error('name')
         <span class="invalid-feedback" role="alert">
           <strong>氏名を入力してください</strong>
@@ -32,15 +33,14 @@
 
     <div class="form-group">
       <label for="email" class="">メールアドレス</label>
-      <input id="email" type="text" class="" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus placeholder="samurai@samurai.com">
+      <input id="email" type="text" class="form-control" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus placeholder="samurai@samurai.com">
       @error('email')
       <span class="invalid-feedback" role="alert">
         <strong>メールアドレスを入力してください</strong>
       </span>
       @enderror
     </div>
-    <hr>
-    <button type="submit" class="">保存</button>
+    <button type="submit" class="btn btn-success mt-3">保存</button>
   </form>
 
   <hr>
@@ -64,7 +64,7 @@
               </div>
                 <div class="modal-footer">
                   <button type="button" class="btn dashboard-delete-link" data-bs-dismiss="modal">キャンセル</button>
-                    <button type="submit" class="btn samuraimart-delete-submit-button">退会する</button>
+                    <button type="submit" class="btn btn-danger">退会する</button>
                 </div>
           </div>
         </div>
@@ -72,5 +72,6 @@
     </form>
   </div>
 
+</div>
 </div>
 @endsection

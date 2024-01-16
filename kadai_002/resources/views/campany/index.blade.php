@@ -1,23 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<div>
-  <h1>会社情報</h1>
-</div>
-<div>
-  <a>会社名</a>
-  <a>{{ $campany->name }}</a>
-</div>
-<div>
-  <a>住所</a>
-  <a>{{ $campany->address }}</a>
-</div>
-<div>
-  <a>代表者</a>
-  <a>{{ $campany->representative }}</a>
-</div>
-<div>
-  <a>メールアドレス</a>
-  <a>{{ $campany->email }}</a>
-</div>
+<!doctype html>
+<html lang="ja">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <div class="container">
+    <div>
+        <h1>会社情報</h1>
+      <table class="table table-striped">
+        <tr>
+          <th scope="row">会社名</th>
+          <td>{{ $campany->name }}</td>
+        </tr>
+        <tr>
+          <th scope="row">住所</th>
+          <td>{{ $campany->address }}</td>
+        </tr>
+        <tr>
+          <th scope="row">代表者</th>
+          <td>{{ $campany->representative }}</td>
+        </tr>
+        <tr>
+          <th scope="row">メールアドレス</th>
+          <td>{{ $campany->email }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script src="js/bootstrap.min.js"></script>
+</html>
 @endsection
