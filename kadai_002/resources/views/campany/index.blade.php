@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <div class="container">
     <div>
-        <h1>会社情報</h1>
+        <h1 class="mt-4">会社情報</h1>
       <table class="table table-striped mt-4">
         <tr>
           <th scope="row">会社名</th>

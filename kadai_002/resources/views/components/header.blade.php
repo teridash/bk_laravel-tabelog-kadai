@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #D6E5DF;">
-            <div class="container">
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #D6E5DF;">
+            <div class="container header">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>

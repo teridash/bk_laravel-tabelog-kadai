@@ -4,7 +4,7 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 <div class="container d-flex justify-content-center mt-3">
 <div class="w-50">
-  <h1>マイページ</h1>
+  <h1 class="mt-4">マイページ</h1>
   <hr>
   <div class="container">
     <div class="d-flex justify-content-between">

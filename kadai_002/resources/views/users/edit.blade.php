@@ -3,7 +3,7 @@
 @section('content')
 <div class="container d-flex justify-content-center mt-3">
 <div class="w-50">
-  <h1>会員情報の編集</h1>
+  <h1 class="mt-4">会員情報の編集</h1>
   <hr>
   <form method="POST" action="{{ route('mypage') }}">
     @csrf

@@ -31,8 +31,8 @@ class StoreController extends AdminController
         $grid->column('name', __('Name'));
         $grid->column('description', __('Description'));
         $grid->column('price', __('Price'))->sortable();
-        $grid->column('open_time', __('Open Time'));
-        $grid->column('close_time', __('Close Time'));
+        $grid->column('opening_time', __('Open Time'));
+        $grid->column('closing_time', __('Close Time'));
         $grid->column('postal_code', __('Postal Code'));
         $grid->column('address', __('Address'));
         $grid->column('phone_number', __('Phone Number'));
@@ -68,8 +68,8 @@ class StoreController extends AdminController
         $show->field('name', __('Name'));
         $show->field('description', __('Description'));
         $show->field('price', __('Price'));
-        $show->field('open_time', __('Open Time'));
-        $show->field('close_time', __('Close Time'));
+        $show->field('opening_time', __('Open Time'));
+        $show->field('closing_time', __('Close Time'));
         $show->field('postal_code', __('Postal Code'));
         $show->field('address', __('Address'));
         $show->field('phone_number', __('Phone Number'));
@@ -94,8 +94,8 @@ class StoreController extends AdminController
         $form->text('name', __('Name'));
         $form->text('description', __('Description'));
         $form->text('price', __('Price'));
-        $form->text('open_time', __('Open Time'));
-        $form->text('close_time', __('Close Time'));
+        $form->text('opening_time', __('Open Time'));
+        $form->text('closing_time', __('Close Time'));
         $form->text('postal_code', __('Postal Code'));
         $form->text('address', __('Address'));
         $form->text('phone_number', __('Phone Number'));

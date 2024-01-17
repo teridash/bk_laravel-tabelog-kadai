@@ -3,7 +3,7 @@
 @section('content')
 <div class="container d-flex justify-content-center mt-3">
 <div class="w-50">
-  <h1>パスワード変更</h1>
+  <h1 class="mt-4">パスワード変更</h1>
   <hr>
   <form method="post" action="{{route('mypage.update_password')}}">
     @csrf

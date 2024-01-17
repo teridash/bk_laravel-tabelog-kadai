@@ -1,10 +1,27 @@
-{{ $user_name }}
+@extends('layouts.app')
 
-<form action="{{ route('reservations.store') }}" method="POST">
-@csrf
-  <input type="number" name="number_of_people">
-  <input type="date" name="date">
-  <input type="number" name="time">
-  <input type="hidden" name="store_id" value="{{ $store_id }}">
-  <button type="submit">予約</button>
-</form>
+@section('content')
+<div class="container d-flex justify-content-center mt-3">
+<div class="w-50">
+  <h1 class="mt-4">予約</h1>
+  <hr>
+  <label for="user_name" class="m-2 fs-5">お名前</label><br>
+  <h4 class="m-2">{{ $user_name }}</h4>
+
+  <form action="{{ route('reservations.store') }}" method="POST">
+    @csrf
+    <label for="number_of_people" class="mt-2 ms-2 fs-5">人数</label>
+    <input type="number" name="number_of_people" class="form-control mt-1" placeholder="例：1（1人）">
+
+    <label for="date" class="mt-2 ms-2 fs-5">日付</label>
+    <input type="date" name="date"class="form-control mt-1">
+
+    <label for="time" class="mt-2 ms-2 fs-5">時間</label>
+    <input type="number" name="time" class="form-control mt-1" placeholder="例：13（13時）">
+
+    <input type="hidden" name="store_id" value="{{ $store_id }}">
+    <button type="submit" class="btn btn-success mt-4">予約</button>
+  </form>
+</div>
+</div>
+@endsection

@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 <div class="container mt-2">
   <div class="row">
-    <h1>  店舗一覧</h1>
+    <h1 class="mt-3">店舗一覧</h1>
     <div class="text-center d-flex justify-content-center">
       <form action="{{route('stores.index')}}" method="GET">
           <select name="category_id" class="form-select mt-3">
@@ -19,16 +20,34 @@
   </div>
 </div>
 
-<div class="container col-4">
-  <div class="">
-  @foreach($stores as $store)
-  <a href="{{ route('stores.show', $store->id) }}">
-  <img src="{{ asset($store->image) }}" class="img-thumbnail">
-  {{ $store -> name }}
-  </a>
-  <br>
-  @endforeach
-  </div>
+<div class="d-flex justify-content-center mt-4">
+    <div class="col-4 mt-4">
+      @foreach($stores as $store)
+      <a href="{{ route('stores.show', $store->id) }}" class="text-decoration-none">
+        <img src="{{ asset($store->image) }}" class="img-thumbnail ">
+        <table class="table">
+          <tr>
+            <th>店舗名</th>
+            <th>{{ $store -> name }}</th>
+          </tr>
+          <tr>
+            <th>値段</th>
+            <th>{{ $store -> price }}円</th>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <th>{{ $store -> address }}</th>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <th>{{ $store -> phone_number }}</th>
+          </tr>
+        </table>
+      </a>
+      <br>
+      @endforeach
+    </div>
+
 </div>
 
 @endsection

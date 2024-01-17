@@ -21,7 +21,7 @@
         @component('components.header')
         @endcomponent
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
