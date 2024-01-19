@@ -12,5 +12,32 @@ use Stripe\Checkout\Session;
 
 class CheckoutController extends Controller
 {
-    //
+    
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        $intent = Auth::user()->createSetupIntent();
+        return view('checkout.index',compact('intent'));
+    }
+
+    public function store(Request $request){
+        $request->user()->newSubscription(
+            'main',env('STRIPE_ID')
+        )->create($request->payment_method);
+        return redirect()->route('mypage')->with('message', '有料会員に登録されました');
+    }
+
+    public function cancel() {
+        
+        return view('checkout.cancel');
+    }
+
+    public function delete() {
+        Auth::user()->subscription('main')->delete();
+        return redirect()->route('mypage')->with('message', '有料会員を終了しました');
+    }
 }

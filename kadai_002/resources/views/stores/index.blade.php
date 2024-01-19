@@ -46,8 +46,9 @@
       </a>
       <br>
       @endforeach
+      {{ $stores->links() }}
     </div>
-
+    
 </div>
 
 @endsection

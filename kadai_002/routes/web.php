@@ -5,6 +5,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::controller(UserController::class)->group(function () {
     Route::put('users/mypage/password', 'update_password')->name('mypage.update_password');
     Route::delete('users/mypage/delete', 'destroy')->name('mypage.destroy');
     Route::get('users/mypage/reservations', 'reservation' )->name('mypage.reservations');
+    
 });
 
 Route::post('reviews', [ReviewController::class, 'store'])->name('reviews.store');
@@ -41,3 +43,13 @@ Route::resource('reservations', ReservationController::class);
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('campany', [App\Http\Controllers\CampanyController::class, 'index'])->name('campany');
+
+Route::controller(CheckoutController::class)->group(function () {
+    Route::get('users/checkout', 'index')->name('checkout.index');
+    Route::post('users/checkout/store', 'store')->name('checkout.store');
+    Route::get('users/checkout/edit', 'edit')->name('checkout.edit');    
+    Route::post('users/checkout/update', 'update')->name('checkout.update');
+
+    Route::get('users/checkout/cancel', 'cancel')->name('checkout.cancel');    
+    Route::post('users/checkout/delete', 'delete')->name('checkout.delete');
+});

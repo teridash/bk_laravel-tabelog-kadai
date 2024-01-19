@@ -32,6 +32,7 @@ class StoreController extends Controller
 
         $stores = Store::where('name', 'like', "%{$name}%")->where('address', 'like', "%{$address}%");
 
+
         if($request->category_id !== null) {
             $category_id = $request->category_id;
             $category = Category::find($category_id);
@@ -39,7 +40,7 @@ class StoreController extends Controller
         }
 
         $total_count = $stores->count();
-        $stores = $stores->paginate();
+        $stores = $stores->paginate(5);
         return view('stores.index', compact('stores', 'categories', 'total_count'));
 
     }
