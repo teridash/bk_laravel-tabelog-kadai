@@ -10,6 +10,7 @@
       <h1 class="mb-3">店舗検索</h1>
       <form action="{{route('stores.index')}}" method="GET">
           <select name="category_id" class="form-select ">
+            <option disabled selected value>カテゴリを選択</option>
             @foreach($categories as $category)
             <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach

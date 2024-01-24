@@ -61,10 +61,16 @@
 </div>
 
 <div class="justify-content-center m-4">
-  @auth
   <div class="row">
     <div class="col m-5">
       <h1 class="mb-4">レビュー</h1>
+      @auth
+      @if(!$user->subscribed('main'))
+      <h5>
+        レビューを投稿するために
+        <a href="{{ route('checkout.index') }}">有料会員になる。</a>
+      </h5>
+      @else
       <form method="POST" action="{{ route('reviews.store') }}">
         @csrf
         <h4>評価</h4>
@@ -81,8 +87,9 @@
         @enderror
         <textarea name="content" class="form-control"></textarea>
         <input type="hidden" name="store_id" value="{{$store->id}}"><br>
-        <button type="submit" class="btn btn-success mb-5">レビューを追加</button>
+        <button type="submit" class="btn btn-success mb-3">レビューを追加</button>
       </form>
+      @endif
       @endauth
     </div>
   </div>

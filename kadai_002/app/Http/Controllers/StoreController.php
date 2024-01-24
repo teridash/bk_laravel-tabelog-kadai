@@ -6,6 +6,7 @@ use App\Models\Store;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Controller
 {
@@ -40,7 +41,7 @@ class StoreController extends Controller
         }
 
         $total_count = $stores->count();
-        $stores = $stores->paginate(5);
+        $stores = $stores->paginate(5)->withQueryString();
         return view('stores.index', compact('stores', 'categories', 'total_count'));
 
     }
@@ -86,8 +87,9 @@ class StoreController extends Controller
     public function show(Store $store)
     {
         $reviews = $store->reviews()->get();
+        $user = Auth::user();
         
-        return view('stores.show', compact('store', 'reviews'));
+        return view('stores.show', compact('store', 'reviews', 'user'));
     }
 
 

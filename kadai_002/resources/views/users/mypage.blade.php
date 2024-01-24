@@ -25,7 +25,7 @@
         <hr>
         @else
         <div class="align-items-center mt-3 mb-4">
-          <a href="{{ route('checkout.cancel') }}" class="mypage">有料会員をやめる</a>
+          <a href="{{ route('checkout.cancel') }}" class="mypage">有料会員を解約する</a>
         </div>
         <hr>
         <div class="align-items-center mt-3 mb-4">
