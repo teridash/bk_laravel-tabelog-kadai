@@ -40,4 +40,17 @@ class CheckoutController extends Controller
         Auth::user()->subscription('main')->delete();
         return redirect()->route('mypage')->with('message', '有料会員を終了しました');
     }
+
+    public function edit() {
+        $user= Auth::user();
+        $intent = Auth::user()->createSetupIntent();
+        return view('checkout.edit',compact('intent','user'));
+    }
+
+    public function update(Request $request) {
+
+        $request->user()
+            ->updateDefaultPaymentMethod($request->payment_method);
+            return redirect()->route('checkout.edit')->with('message', 'カードを変更しました');
+        }
 }

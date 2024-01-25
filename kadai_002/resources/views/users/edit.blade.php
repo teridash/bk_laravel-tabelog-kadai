@@ -45,6 +45,10 @@
 
   <hr>
 
+  <a href="{{ route('checkout.edit') }}">クレジットカード編集</a>
+
+  <hr>
+
   <div class="d-flex justify-content-start">
     <form method="POST" action="{{ route('mypage.destroy') }}">
     @csrf

@@ -9,6 +9,8 @@ class Store extends Model
 {
     use HasFactory;
 
+    const DAY_OF_WEEK = ['日','月','火','水','木','金','土'];
+
     public function category() {
         return $this->belongsTo(Category::class);
     }
@@ -19,5 +21,14 @@ class Store extends Model
 
     public function reviews() {
         return $this->hasMany(Review::class);
+    }
+
+    public function setHolidayAttribute($holidays)
+    {
+        $results = [];
+        foreach($holidays as $holiday){
+            $results[] = Store::DAY_OF_WEEK[$holiday];
+        }            
+        $this->attributes['holiday'] = implode(",",$results);
     }
 }

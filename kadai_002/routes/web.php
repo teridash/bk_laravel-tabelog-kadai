@@ -22,7 +22,7 @@ use App\Http\Controllers\CheckoutController;
     //return view('welcome');
 //});
 
-Route::controller(UserController::class)->group(function () {
+Route::controller(UserController::class)->middleware('auth')->group(function () {
     Route::get('users/mypage', 'mypage')->name('mypage');
     Route::get('users/mypage/edit', 'edit')->name('mypage.edit');
     Route::put('users/mypage', 'update')->name('mypage.update');
@@ -44,12 +44,12 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::get('campany', [App\Http\Controllers\CampanyController::class, 'index'])->name('campany');
 
-Route::controller(CheckoutController::class)->group(function () {
+Route::controller(CheckoutController::class)->middleware('auth')->group(function () {
     Route::get('users/checkout', 'index')->name('checkout.index');
     Route::post('users/checkout/store', 'store')->name('checkout.store');
-    Route::get('users/checkout/edit', 'edit')->name('checkout.edit');    
-    Route::post('users/checkout/update', 'update')->name('checkout.update');
+    Route::get('users/checkout/edit', 'edit')->middleware('subscribed')->name('checkout.edit');    
+    Route::post('users/checkout/update', 'update')->middleware('subscribed')->name('checkout.update');
 
-    Route::get('users/checkout/cancel', 'cancel')->name('checkout.cancel');    
-    Route::post('users/checkout/delete', 'delete')->name('checkout.delete');
+    Route::get('users/checkout/cancel', 'cancel')->middleware('subscribed')->name('checkout.cancel');    
+    Route::post('users/checkout/delete', 'delete')->middleware('subscribed')->name('checkout.delete');
 });

@@ -11,17 +11,22 @@
   <form action="{{ route('reservations.store') }}" method="POST">
     @csrf
     <label for="number_of_people" class="mt-2 ms-2 fs-5">人数</label>
-    <input type="number" name="number_of_people" class="form-control mt-1" placeholder="例：1（1人）">
+    <input type="number" name="number_of_people" value="{{old('number_of_people')}}" class="form-control mt-1" placeholder="例：1（1人）">
 
     <label for="date" class="mt-2 ms-2 fs-5">日付</label>
-    <input type="date" name="date"class="form-control mt-1">
+    <input type="date" name="date" value="{{old('date')}}" class="form-control mt-1">
 
     <label for="time" class="mt-2 ms-2 fs-5">時間</label>
-    <input type="number" name="time" class="form-control mt-1" placeholder="例：13（13時）">
+    <input type="number" name="time" value="{{old('time')}}" class="form-control mt-1" placeholder="例：13（13時）">
 
     <input type="hidden" name="store_id" value="{{ $store_id }}">
     <button type="submit" class="btn btn-success mt-4">予約</button>
   </form>
+  @if (isset($errors))
+  @foreach ($errors->all() as $error)
+  <p>{{ $error }}</p>
+  @endforeach
+  @endif
 </div>
 </div>
 @endsection

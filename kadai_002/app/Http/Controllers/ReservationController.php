@@ -6,6 +6,8 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Datetime;
+use App\Models\Store;
 
 class ReservationController extends Controller
 {
@@ -40,6 +42,29 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'number_of_people' => 'required|integer'  ,
+            'date' => 'required|date' ,
+            'time' => 'required|integer|between:0,24' 
+        ]);
+
+        $date_time = new DateTime($request->input('date').' '. $request->input('time').':00:00');
+        
+        if (new DateTime() > $date_time) {
+            return back()->withInput($request->input())->withErrors(['message' => '現在より過去の予約日時は指定できません。']);
+        }
+
+        $store = Store::find($request->store_id);
+        if($store->opening_time > $date_time->format('H:i:s') || $store->closing_time < $date_time->format('H:i:s')){
+            return back()->withInput($request->input())->withErrors(['message' => '営業時間外です。']);
+        }
+
+        foreach(explode(',',$store->holiday) as $holiday){
+            if(array_search($holiday,Store::DAY_OF_WEEK) == $date_time->format('w')){
+                return back()->withInput($request->input())->withErrors(['message' => '定休日です。']);
+            }
+        }
+
         $reservation = new Reservation();
         $reservation->user_id = Auth::user()->id;
         $reservation->number_of_people = $request->input('number_of_people');
