@@ -1,21 +1,32 @@
-@if (session('message'))
-{{ session('message') }}
-@endif
+@extends('layouts.app')
 
-<p>{{$user->defaultPaymentMethod()->billing_details->name}}</p>
-<p>**** **** **** {{$user->defaultPaymentMethod()->card->last4}}</p>
+@section('content')
 
-<form id="card_form" action="{{route('checkout.update')}}" method="POST">
-  @csrf
-  <input id="card-holder-name" type="text">
-  <div id="card-element"></div>
-  <input name="payment_method" type="hidden">
-</form>
+<div class="container d-flex justify-content-center mt-3">
+  <div class="w-50">
+    <h1 class="mt-4">クレジットカード編集</h1>
+    @if (session('message'))
+    {{ session('message') }}
+    @endif
+    <hr>
+    <label for="name" class="mt-2 ms-2 fs-5">現在のクレジットカード
+    <p>{{$user->defaultPaymentMethod()->billing_details->name}}</p>
+    <p>**** **** **** {{$user->defaultPaymentMethod()->card->last4}}</p>
+    </label>
 
+    <form id="card_form" action="{{route('checkout.update')}}" method="POST">
+      @csrf
+      <label for="name" class="mt-2 ms-2 fs-5">新しいクレジットカード</label>
+      <input id="card-holder-name" type="text" class="form-control mt-2" placeholder="カード名義人">
+      <div id="card-element" class="form-control form-control-lg mt-3"></div>
+      <input name="payment_method" type="hidden">
+    </form>
+    <button id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-success mt-3">
+    更新    
+    </button>
+  </div>
+</div>
 
-<button id="card-button" data-secret="{{ $intent->client_secret }}">
-    Update Payment Method
-</button>
 
 <script src="https://js.stripe.com/v3/"></script>
 
@@ -51,3 +62,4 @@
       }
   });
 </script>
+@endsection

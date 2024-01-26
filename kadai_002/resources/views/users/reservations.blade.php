@@ -27,11 +27,10 @@
     <form action="{{route('reservations.destroy', $reservation)}}" method="post" onsubmit="return confirm('予約をキャンセルします。よろしいですか？');">
       @csrf
       @method('DELETE')  
-      <button type="submit" class="btn btn-danger">キャンセルする</button>
+      <button type="submit" class="btn btn-danger mb-4">キャンセルする</button>
     </form>
+    @endforeach
+    @endif
   </div>
 </div>
-@endforeach
-@endif
-
 @endsection
