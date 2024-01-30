@@ -22,7 +22,7 @@
         </tr>
         <tr>
           <th>カテゴリ</th>
-          <th>{{ $store -> category_id }}</th>
+          <th>{{ $store -> category -> name }}</th>
         </tr>
         <tr>
           <th>値段</th>
