@@ -26,7 +26,7 @@
         </tr>
         <tr>
           <th>値段</th>
-          <th>{{ $store -> price }}円</th>
+          <th>{{ $store -> price }}円～</th>
         </tr>
         <tr>
           <th>開店時間</th>

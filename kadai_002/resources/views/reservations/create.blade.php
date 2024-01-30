@@ -24,7 +24,7 @@
   </form>
   @if (isset($errors))
   @foreach ($errors->all() as $error)
-  <p>{{ $error }}</p>
+  <p class="mt-2 text-danger">※{{ $error }}</p>
   @endforeach
   @endif
 </div>
